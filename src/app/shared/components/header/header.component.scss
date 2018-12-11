@@ -1,0 +1,45 @@
+#header {
+    // line-height: 40px;
+    justify-content: space-between;
+    color: white;
+    background: black; // height: 2.5rem;
+    img {
+        max-height: 2.5rem;
+    }
+}
+
+.proposition {
+    border: 1px solid cyan; // line-height: 3rem;
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    display: inline-block;
+}
+
+.word {
+    border: 1px solid brown;
+}
+
+.no-grow {
+    flex-grow: inherit;
+}
+
+.login {
+    justify-self: flex-end;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.cell-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.login{
+    
+}

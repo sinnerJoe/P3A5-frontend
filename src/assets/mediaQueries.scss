@@ -1,0 +1,143 @@
+$ipadMin: 768px;
+$ipadMax: 1024px;
+$iphoneXmin: 375px;
+$iphoneXmax: 812px;
+$androidPhoneMin: 320px;
+$androidPhoneMax: 568px;
+$fullHDmin: 1600px;
+$medium: 1200px;
+$laptopMin: 1300px;
+$laptopMax: 1500px;
+@mixin ipadLandscape {
+    @media only screen and (max-width:#{$ipadMax}) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin ipadPortrait {
+    @media only screen and (max-width:#{$ipadMin}) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin iphoneXLandscape {
+    @media only screen and (max-width:#{$iphoneXmax}) {
+        @content;
+    }
+}
+
+@mixin iphoneXPortrait {
+    @media only screen and (max-width:#{$iphoneXmin}) {
+        @content;
+    }
+}
+
+@mixin iphoneSEPortrait {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin iphoneSELandscape {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin lumiaPortrait {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin lumiaLandscape {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin androidPortrait {
+    @media only screen and (max-width:#{$androidPhoneMax}) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin androidLandscape {
+    @media only screen and (max-width:#{$androidPhoneMax}) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media only screen and (max-width:#{$laptopMax}) {
+        @content;
+    }
+}
+
+@mixin fullHD {
+    @media only screen and (min-width:#{$fullHDmin}) {
+        @content;
+    }
+}
+
+@mixin fullHDmax {
+    @media only screen and (max-width:#{$fullHDmin}) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media only screen and (max-width:#{$medium}) {
+        @content;
+    }
+}
+
+@mixin xxs {
+    @media only screen and (max-width: 360px) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media only screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media only screen and (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media only screen and (max-width: 840px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media only screen and (max-width: 960px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media only screen and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media only screen and (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin hover-supported {
+    @media not all and (pointer: coarse) {
+        &:hover {
+            @content;
+        }
+    }
+}

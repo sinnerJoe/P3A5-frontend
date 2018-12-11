@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+// @import '../node_modules/spectre.css/src/spectre';
+@import './assets/index.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+body {
+    font-family: 'Roboto Slab', serif;
+}
