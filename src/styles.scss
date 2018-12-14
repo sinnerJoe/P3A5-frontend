@@ -6,3 +6,22 @@
 body {
     font-family: 'Roboto Slab', serif;
 }
+
+.table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.cell-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.hide {
+    display: none !important;
+}
+
+.flex-nowrap{
+  flex-wrap: nowrap;
+}

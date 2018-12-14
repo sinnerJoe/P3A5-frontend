@@ -6,3 +6,7 @@ $contourColor: rgb(39, 39, 39);
     text-shadow: -1px 0 $contourColor, 0 1px $contourColor, 1px 0 $contourColor, 0 -1px $contourColor;
     color: rgb(187, 187, 187);
 }
+
+::host{
+  display: block;
+}

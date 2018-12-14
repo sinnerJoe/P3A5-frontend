@@ -1,0 +1,51 @@
+
+
+<div class="columns col-gapless pr-3 pr-md-0 pl-3 pl-md-3 wrapper">
+
+  <div class="justify-content-end">
+    <i class="fas fa-caret-left arrow c-hand" (click) = "prevClick()"></i>
+  </div>
+  <div class="column">
+    <div class="table">
+      <div class="cell-wrapper">
+
+        <div class="line relative ">
+          <div class="border upper"></div>
+          <div class="border lower"></div>
+          <div #lineScroller class="full-height columns col-gapless flex-nowrap">
+            <!-- <div class="pl-2 pr-2"></div> -->
+            <div #miniature class="miniature mr-1 ml-1 column col-1 col-xl-2 col-lg-2 col-sm-4"
+
+                *ngFor="let img of images; let index = index" [class.selected]="index == selectedIndex"
+                (click)="selectIndex(index)">
+              <div class="image-container full-height">
+                <img [src]="img" class="img-responsive img-fit-contain" alt="">
+              </div>
+            </div>
+
+            <div  #miniature [class.selected] = "selectedIndex == -1"
+            class="miniature mr-1 ml-1 full-height column col-1 col-xl-2 col-lg-2 col-sm-4"
+            (click)="selectIndex(-1)"
+            >
+              <div class="relative image-container full-height text-center">
+                <div class="relative-center">
+
+                  <div class="absolute-center">
+                    <i class="fas fa-plus  color-white fa-4x d-inline-block "></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="justify-content-end">
+    <i class="fas fa-caret-right arrow c-hand" (click)="nextClick()"></i>
+  </div>
+</div>
+
+<img [src]="images[selectedIndex]" [class.hide]="selectedIndex == -1" alt="" class="pr-1 pl-1 img-responsive full-image">
+<app-hover-canvas [class.hide]="selectedIndex !== -1"></app-hover-canvas>

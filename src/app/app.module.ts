@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HoverCanvasComponent } from './shared/components/hover-canvas/hover-canvas.component';
+import { ImageListComponent } from './shared/components/image-list/image-list.component';
+import { AnalyzedImageComponent } from './shared/components/analyzed-image/analyzed-image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HoverCanvasComponent
+    HoverCanvasComponent,
+    ImageListComponent,
+    AnalyzedImageComponent
   ],
   imports: [
     BrowserModule,
