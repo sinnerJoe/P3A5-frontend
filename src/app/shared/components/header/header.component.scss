@@ -1,3 +1,4 @@
+@import "../../../../assets/constants.scss";
 #header {
     // line-height: 40px;
     justify-content: space-between;
@@ -9,7 +10,7 @@
 }
 
 .proposition {
-    border: 1px solid cyan; // line-height: 3rem;
+    border: 2px solid $primary; // line-height: 3rem;
     span {
         display: inline-block;
         vertical-align: middle;
@@ -18,7 +19,7 @@
 }
 
 .word {
-    border: 1px solid brown;
+    border: 2px solid brown;
 }
 
 .no-grow {
@@ -29,7 +30,57 @@
     justify-self: flex-end;
 }
 
+.login {}
 
-.login{
-    
+.popover.popover-bottom .popover-container {
+    left: -100px;
+    top: 140%;
 }
+
+.triangle {
+    background: transparent;
+}
+
+.transparent-bg {
+    background: transparent;
+}
+
+.white-bg {
+    background: white;
+}
+
+.color-black {
+    color: black;
+}
+
+.menu {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    padding: 0;
+    margin: 0;
+    .card-body{
+      padding-top: 0;
+    }
+}
+
+.login-entry {
+    $fbColor: rgb(14, 31, 91);
+    $lightFBColor: rgb(59, 89, 152);
+    color: $fbColor;
+    a {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        background: $primaryDark;
+        color: white;
+    }
+    a:hover {
+        color: white;
+        background: $primary;
+    }
+}
+
+

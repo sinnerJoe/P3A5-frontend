@@ -7,6 +7,16 @@ $contourColor: rgb(39, 39, 39);
     color: rgb(187, 187, 187);
 }
 
-::host{
-  display: block;
+::host {
+    display: block;
+    width: 100%;
 }
+
+label {
+    width: 100%;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
