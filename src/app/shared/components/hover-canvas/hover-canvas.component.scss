@@ -1,7 +1,7 @@
 @import "../../../../assets/constants.scss";
 $contourColor: rgb(39, 39, 39);
 .hint-text {
-    bottom: 15%;
+    // bottom: 15%;
     width: 100%;
     text-shadow: -1px 0 $contourColor, 0 1px $contourColor, 1px 0 $contourColor, 0 -1px $contourColor;
     color: rgb(187, 187, 187);
