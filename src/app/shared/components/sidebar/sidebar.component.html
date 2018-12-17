@@ -1,0 +1,50 @@
+<head>
+  <script>sidebar.component.ts</script>
+</head>
+<div class="sidebar_">
+  <div [@sideMenuAnime]='openCloseBase' class="sidebar_button">
+
+    <button class="btn btn-action btn-primary btn-lg" (click)='hideAndShow()'><i class="fas fa-caret-right"></i></button>
+
+  </div>
+
+  
+    <div [@sideMenuAnime]='openClose' class="sidebar_content" id="mySidebar_content">
+      <div [@sideMenuAnime]='openClose' class="sidebar_button_x" >
+        <button class="btn btn-action btn-primary btn-lg" (click)='hideAndShow()'><i class="fas fa-times"></i></button>
+      </div>
+      <div class="accordion">
+      <br/>
+        <input id="accordion-1" type="checkbox" name="accordion-checkbox" hidden="">
+        
+        <label class="accordion-header c-hand" for="accordion-1">Elements</label>
+        <div class="accordion-body">
+          <ul class="menu menu-nav">
+            <li class="menu-item"><a href="#accordions">Element 1</a></li>
+            <li class="menu-item"><a href="#accordions">Element 2</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <input id="accordion-2" type="checkbox" name="accordion-checkbox" hidden="">
+        <label class="accordion-header c-hand" for="accordion-2">Layout</label>
+        <div class="accordion-body">
+          <ul class="menu menu-nav">
+            <li class="menu-item"><a href="#accordions">Layout 1</a></li>
+            <li class="menu-item"><a href="#accordions">Layout 2</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <input id="accordion-3" type="checkbox" name="accordion-checkbox" hidden="">
+        <label class="accordion-header c-hand" for="accordion-3">Components</label>
+        <div class="accordion-body">
+          <ul class="menu menu-nav">
+            <li class="menu-item"><a href="#accordions">Component 1</a></li>
+            <li class="menu-item"><a href="#accordions">Component 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
