@@ -7,11 +7,8 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HoverCanvasComponent } from './shared/components/hover-canvas/hover-canvas.component';
-<<<<<<< HEAD
 import { ImageListComponent } from './shared/components/image-list/image-list.component';
 import { AnalyzedImageComponent } from './shared/components/analyzed-image/analyzed-image.component';
-=======
->>>>>>> 24fdec618fe0ee51dfa571c1134b70bafd86fc7d
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
@@ -20,7 +17,6 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     FooterComponent,
     HeaderComponent,
     HoverCanvasComponent,
-<<<<<<< HEAD
     ImageListComponent,
     AnalyzedImageComponent,
     SidebarComponent
@@ -29,13 +25,6 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-=======
-    SidebarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule, 
->>>>>>> 24fdec618fe0ee51dfa571c1134b70bafd86fc7d
     BrowserAnimationsModule
   ],
   providers: [],
