@@ -19,6 +19,9 @@
                 *ngFor="let img of images; let index = index" [class.selected]="index == selectedIndex"
                 (click)="selectIndex(index)">
               <div class="image-container full-height">
+                <div class="delete-button c-hand" (click)="removeImage(index)">
+                  <i class="far fa-2x fa-times-circle"></i>
+                </div>
                 <img [src]="img" class="img-responsive img-fit-contain" alt="">
               </div>
             </div>
@@ -48,4 +51,4 @@
 </div>
 
 <img [src]="images[selectedIndex]" [class.hide]="selectedIndex == -1" alt="" class="pr-1 pl-1 img-responsive full-image">
-<app-hover-canvas [class.hide]="selectedIndex !== -1"></app-hover-canvas>
+<app-hover-canvas [class.hide]="selectedIndex !== -1" (selectImages)="addImage($event)"></app-hover-canvas>

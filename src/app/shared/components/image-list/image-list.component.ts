@@ -13,10 +13,10 @@ export class ImageListComponent implements OnInit {
 
 
   @Output()
-  chageImageList = new EventEmitter<DisplayedType>();
+  chageImageList = new EventEmitter<string[]>();
 
   @Input('images')
-  set inputPictures(imgs: DisplayedType) {
+  set inputPictures(imgs: DisplayedType[]) {
     this.images = imgs;
   }
 
@@ -28,16 +28,7 @@ export class ImageListComponent implements OnInit {
 
   selectedIndex: number = -1;
 
-  images: DisplayedType = [
-    '../../../../../assets/img/manuscript.jpg',
-    '../../../../../assets/img/manuscript2.jpg',
-    '../../../../assets/img/manuscript.jpg',
-    '../../../../../assets/img/manuscript.jpg',
-    '../../../../../assets/img/manuscript2.jpg',
-    '../../../../assets/img/manuscript.jpg',
-    '../../../../../assets/img/manuscript.jpg',
-    '../../../../../assets/img/manuscript2.jpg',
-    '../../../../assets/img/manuscript.jpg',
+  images: DisplayedType[] = [
   ];
 
   constructor() { }
@@ -114,8 +105,23 @@ export class ImageListComponent implements OnInit {
     this.adjustScroller(index)
   }
 
+  addImage(img: string){
+    console.log(img)
+    if(this.images.findIndex(v => v === img) == -1){
+      this.images.push(img)
+      this.chageImageList.emit(this.images as string[])
+    }
+  }
+
+  removeImage(index: number){
+    this.images.splice(index, 1)
+    this.chageImageList.emit(this.images as string[])
+    if(this.images.length == 0){
+      this.selectedIndex = -1;
+    }
+  }
 
 
 }
 
-type DisplayedType = string[] | ProcessedImage[];
+type DisplayedType = string | ProcessedImage;

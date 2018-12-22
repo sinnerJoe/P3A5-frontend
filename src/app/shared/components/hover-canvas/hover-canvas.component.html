@@ -1,20 +1,21 @@
 
-<label>
+<label (drop)="onDrop($event)"
+    (dragover)="onDragOver($event)">
 
   <div class="p-relative c-hand">
-    
+
     <img class="img-fit-cover img-responsive" src="../../../../assets/img/placeholder.jpg" alt="">
     <div class="hint-text p-absolute text-center">
       <h3>
         <b>
-          Click or drag images over this canvas 
+          Click or drag images over this canvas
         </b>
       </h3>
     </div>
   </div>
-  <input #imgInput type="file" value="" (change)="imageSelected()" hidden>
+  <input #imgInput type="file" accept="image/*" multiple value="" (change)="imageSelected()" hidden>
 </label>
-<!-- 
+<!--
     The purpose of this website is to analyze the images of pages from old romanian
     cyrillic writings in order to find the areas corresponding to diverse
     page elements like images, paragraphs, lines, words etc.
