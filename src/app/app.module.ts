@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HoverCanvasComponent } from './shared/components/hover-canvas/hover-canvas.component';
 import { ImageListComponent } from './shared/components/image-list/image-list.component';
 import { AnalyzedImageComponent } from './shared/components/analyzed-image/analyzed-image.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AnalyzedImageComponent } from './shared/components/analyzed-image/analy
     HeaderComponent,
     HoverCanvasComponent,
     ImageListComponent,
-    AnalyzedImageComponent
+    AnalyzedImageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

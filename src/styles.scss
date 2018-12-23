@@ -18,6 +18,11 @@ body {
     vertical-align: middle;
 }
 
+.row-wrapper{
+  display: table-row;
+  vertical-align: middle;
+}
+
 .hide {
     display: none !important;
 }
