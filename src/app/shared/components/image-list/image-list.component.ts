@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, Input, EventEmitter, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { ProcessedImage } from 'src/app/ProcessedImage';
+import { ProcessedImage } from '../../../ProcessedImage';
+import { AnalysisData } from '../../models/AnalysisData';
 
 @Component({
-  selector: 'app-image-list',
+selector: 'app-image-list',
   templateUrl: './image-list.component.html',
   styleUrls: ['./image-list.component.scss']
 })
@@ -13,11 +14,25 @@ export class ImageListComponent implements OnInit {
 
 
   @Output()
-  chageImageList = new EventEmitter<string[]>();
+  changeImageList = new EventEmitter<string[]>();
 
   @Input('images')
   set inputPictures(imgs: DisplayedType[]) {
     this.images = imgs;
+  }
+
+
+  _displayMode: boolean;
+
+  @Input('displayMode')
+  set displayMode(value: boolean){
+    this._displayMode = value
+    if(this._displayMode && this.selectedIndex == -1)
+      this.selectedIndex = 0;
+  }
+
+  get displayMode(): boolean{
+    return this._displayMode;
   }
 
   @ViewChild("lineScroller")
@@ -37,16 +52,20 @@ export class ImageListComponent implements OnInit {
   }
 
   nextClick() {
+    const lastImageIndex = this.images.length - 1;
     if (this.selectedIndex === -1 && this.images.length != 0) {
       this.selectedIndex = 0;
-    } else if (this.selectedIndex === this.images.length - 1) {
-      this.selectedIndex = -1;
+    } else if (this.selectedIndex === lastImageIndex) {
+      this.selectedIndex = this.displayMode ?  lastImageIndex : -1;
     } else this.selectedIndex++;
     this.getMiniatureXPosition(this.selectedIndex)
   }
   prevClick() {
-    if (this.selectedIndex === -1 && this.images.length != 0) {
-      this.selectedIndex = this.images.length - 1;
+    const lastImageIndex = this.images.length - 1;
+    if(this.displayMode && this.selectedIndex == 0)
+      this.selectedIndex = lastImageIndex
+    else if (this.selectedIndex === -1 && this.images.length != 0 ) {
+      this.selectedIndex = lastImageIndex;
     } else {
       this.selectedIndex--;
     }
@@ -109,16 +128,28 @@ export class ImageListComponent implements OnInit {
     console.log(img)
     if(this.images.findIndex(v => v === img) == -1){
       this.images.push(img)
-      this.chageImageList.emit(this.images as string[])
+      this.changeImageList.emit(this.images as string[])
     }
   }
 
   removeImage(index: number){
     this.images.splice(index, 1)
-    this.chageImageList.emit(this.images as string[])
+    this.changeImageList.emit(this.images as string[])
     if(this.images.length == 0){
-      this.selectedIndex = -1;
+      this.selectedIndex =  -1;
     }
+  }
+
+  getImg(arg: DisplayedType){
+    if(typeof arg === 'string'){
+      return arg
+    } else {
+      return "/api/" + arg.path
+    }
+  }
+
+  getData(arg: ProcessedImage){
+    return { lines: arg.lines, blocks: arg.blocks }
   }
 
 

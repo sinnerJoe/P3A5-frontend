@@ -4,6 +4,7 @@ import { HoverCanvasComponent } from './shared/components/hover-canvas/hover-can
 import { ImageListComponent } from './shared/components/image-list/image-list.component';
 import { AnalyzedImageComponent } from './shared/components/analyzed-image/analyzed-image.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ProcessedImagesPageComponent } from './pages/processed-images-page/processed-images-page.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,14 @@ const routes: Routes = [
     component: AnalyzedImageComponent
   },
   {
-    path: "**",
-    component: MainPageComponent
+    path: ":id",
+    component: ProcessedImagesPageComponent,
+    pathMatch: "full"
+  },
+  {
+    path: "",
+    component: MainPageComponent,
+    pathMatch: "full"
   }
 
 ];

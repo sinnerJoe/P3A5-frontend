@@ -9,7 +9,12 @@ import { HoverCanvasComponent } from './shared/components/hover-canvas/hover-can
 import { ImageListComponent } from './shared/components/image-list/image-list.component';
 import { AnalyzedImageComponent } from './shared/components/analyzed-image/analyzed-image.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
-
+import { HttpClientModule } from "@angular/common/http";
+import { ProcessedImagesPageComponent } from './pages/processed-images-page/processed-images-page.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +23,11 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     HoverCanvasComponent,
     ImageListComponent,
     AnalyzedImageComponent,
-    MainPageComponent
+    MainPageComponent,
+    ProcessedImagesPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [HttpClientModule, BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers }), EffectsModule.forRoot([AppEffects])],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

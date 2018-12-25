@@ -121,8 +121,7 @@ export class AnalyzedImageComponent implements OnInit {
           y2: 1600,
           displayed: true
         },
-      ],
-      paragraphs: []
+      ]
     };
   }
 }

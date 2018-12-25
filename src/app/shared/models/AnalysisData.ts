@@ -9,7 +9,5 @@ export interface Rectangle{
 
 export interface AnalysisData{
   lines: Rectangle[]
-  paragraphs: Rectangle[]
   blocks: Rectangle[]
-
 }

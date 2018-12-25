@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "P3A5-frontend"
+  "defaultProject": "P3A5-frontend",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -1,6 +1,6 @@
 
 export interface Rectangle{
-    
+
     x1: number,
     y1: number,
     x2: number,
@@ -9,13 +9,10 @@ export interface Rectangle{
 
 export interface ProcessedImage{
     path: string
-    paragraphs: {
-        [key: string]: Rectangle
-    }
     lines: {
         [key: string]: Rectangle
     }
-    columns: {
+    blocks: {
         [key: string]: Rectangle
     }
 }
