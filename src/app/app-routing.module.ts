@@ -11,7 +11,7 @@ const routes: Routes = [
     path: "test",
     component: AnalyzedImageComponent
   },
-  {
+{
     path: ":id",
     component: ProcessedImagesPageComponent,
     pathMatch: "full"

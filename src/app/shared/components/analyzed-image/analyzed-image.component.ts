@@ -53,7 +53,7 @@ export class AnalyzedImageComponent implements OnInit {
   makeRectangle(val) {
     return {
       width: this.rectangleWidth(val.x1, val.x2),
-      height: this.rectangleWidth(val.y1, val.y2),
+      height: this.rectangleHeight(val.y1, val.y2),
       top: this.yPos(val.y1),
       left: this.xPos(val.x1),
     }
@@ -96,32 +96,32 @@ export class AnalyzedImageComponent implements OnInit {
   onImageLoad(event){
     this.sourceHeight = this.displayedImage.nativeElement.naturalHeight;
     this.sourceWidth = this.displayedImage.nativeElement.naturalWidth;
-    this.data = {
-      lines: [
-        {
-          x1: 600,
-          y1: 2000,
-          x2: 1800,
-          y2: 1900,
-          displayed: true
-        },
-        {
-          x1: 500,
-          y1: 2000,
-          x2: 800,
-          y2: 1900,
-          displayed: true
-        },
-      ],
-      blocks: [
-        {
-          x1: 300,
-          y1: 1500,
-          x2: 600,
-          y2: 1600,
-          displayed: true
-        },
-      ]
-    };
+    // this.data = {
+    //   lines: [
+    //     {
+    //       x1: 600,
+    //       y1: 2000,
+    //       x2: 1800,
+    //       y2: 1900,
+    //       displayed: true
+    //     },
+    //     {
+    //       x1: 500,
+    //       y1: 2000,
+    //       x2: 800,
+    //       y2: 1900,
+    //       displayed: true
+    //     },
+    //   ],
+    //   blocks: [
+    //     {
+    //       x1: 300,
+    //       y1: 1500,
+    //       x2: 600,
+    //       y2: 1600,
+    //       displayed: true
+    //     },
+    //   ]
+    // };
   }
 }

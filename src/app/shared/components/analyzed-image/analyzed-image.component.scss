@@ -1,7 +1,8 @@
 .line-rectangle {
     position: absolute;
-    border: 3px yellow solid;
+    border: 1.5px yellow solid;
     background: rgba(228, 0, 0, 0.582);
+    box-sizing: border-box;
 }
 
 .full-size {
@@ -23,6 +24,12 @@
 }
 
 .block-rectangle {
-  @extend .line-rectangle;
+    @extend .line-rectangle;
     border: 3px blue solid;
+    background: none;
+    box-sizing: content-box;
+}
+
+.full-size-image {
+    width: 100%;
 }
