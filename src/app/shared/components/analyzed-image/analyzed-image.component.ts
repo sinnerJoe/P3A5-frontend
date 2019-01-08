@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { AnalysisData } from '../../models/AnalysisData';
+import { _getViewData } from '@angular/core/src/render3/state';
 
 interface CalculatedPos {
   width: number,
@@ -14,22 +15,37 @@ interface CalculatedPos {
   styleUrls: ["./analyzed-image.component.scss"]
 })
 export class AnalyzedImageComponent implements OnInit {
+
+  imageLoaded: boolean = false;
+  _image: string = "../../../../assets/img/placeholder.jpg";
+
   @Input()
-  image: string = "../../../../assets/img/manuscript2.jpg";
+  set image(value: string){
+    this._image = value;
+    this.imageLoaded = false;
+  }
+
+  get image(){
+    return this._image;
+  }
 
   @Input()
   set data(data: AnalysisData) {
     this._data = data
-    this.lineRectangles = data.lines.map((v) => this.makeRectangle(v))
-    this.blockRectangles = data.blocks.map((v) => this.makeRectangle(v))
+    console.log("SET DATA")
+    console.log(data)
+    if(this.imageLoaded)
+      this.loadData();
   }
 
 
 
   lineRectangles: CalculatedPos[] = null
   blockRectangles: CalculatedPos[] = null
+  footnote: CalculatedPos= null
 
   _data:AnalysisData;
+
   @ViewChild("displayedImage")
   displayedImage: ElementRef;
 
@@ -49,6 +65,18 @@ export class AnalyzedImageComponent implements OnInit {
   // get visibleLines() {
   //   return this.data.lines.filter(val => val.displayed);
   // }
+
+  loadData(){
+    this.lineRectangles = this._data.lines.map((v) => this.makeRectangle(v))
+    this.blockRectangles = this._data.blocks.map((v) => this.makeRectangle(v))
+    console.log("FOOTNOTE " + this._data.footnote)
+    console.log("DATA ")
+    console.log(this._data)
+    if(this._data.footnote)
+      this.footnote = this.makeRectangle(this._data.footnote)
+    else
+      this.footnote = null
+  }
 
   makeRectangle(val) {
     return {
@@ -96,6 +124,9 @@ export class AnalyzedImageComponent implements OnInit {
   onImageLoad(event){
     this.sourceHeight = this.displayedImage.nativeElement.naturalHeight;
     this.sourceWidth = this.displayedImage.nativeElement.naturalWidth;
+    this.imageLoaded = true;
+    if(this._data)
+      this.loadData();
     // this.data = {
     //   lines: [
     //     {

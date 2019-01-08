@@ -1,3 +1,5 @@
+import { AttributeMarker } from '@angular/core/src/render3';
+import { AnalysisData } from './shared/models/AnalysisData';
 
 export interface Rectangle{
 
@@ -7,12 +9,9 @@ export interface Rectangle{
     y2: number
 }
 
-export interface ProcessedImage{
+export interface ProcessedImage extends AnalysisData{
     path: string
-    lines: {
-        [key: string]: Rectangle
-    }
-    blocks: {
-        [key: string]: Rectangle
-    }
+    lines: Rectangle[]
+    blocks: Rectangle[]
+    footnote?: Rectangle
 }

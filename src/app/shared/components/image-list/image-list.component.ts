@@ -149,7 +149,7 @@ export class ImageListComponent implements OnInit {
   }
 
   getData(arg: ProcessedImage){
-    return { lines: arg.lines, blocks: arg.blocks }
+    return arg
   }
 
 

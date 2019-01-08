@@ -4,10 +4,11 @@ export interface Rectangle{
   x2: number
   y1: number
   y2: number
-  displayed: boolean
+  displayed?: boolean
 }
 
 export interface AnalysisData{
   lines: Rectangle[]
   blocks: Rectangle[]
+  footnote?: Rectangle
 }

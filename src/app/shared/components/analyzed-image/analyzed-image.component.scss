@@ -30,6 +30,12 @@
     box-sizing: content-box;
 }
 
+.footnote-rectangle{
+  @extend .line-rectangle;
+  border: 3px magenta solid;
+  background: rgba(173, 0, 253, 0.600);
+}
+
 .full-size-image {
     width: 100%;
 }

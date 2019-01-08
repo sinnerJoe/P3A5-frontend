@@ -1,3 +1,20 @@
-<app-image-list [images]="loadedImages"  [displayMode] = 'true'>
 
-</app-image-list>
+<div *ngIf="anyImagesLoaded(); else loader">
+
+  <h2 class="text-center mt-5">
+    Loaded {{loadedNr}} / {{totalNr}}
+  </h2>
+
+  <app-image-list [images]="loadedImages"  [displayMode] = 'true'>
+
+  </app-image-list>
+</div>
+
+<ng-template #loader>
+  <h2 class="text-center">
+    Images are being processed, please wait
+  </h2>
+  <div class="columns">
+    <img class="col-mx-auto" src="../../../assets/img/loader.svg">
+  </div>
+</ng-template>
