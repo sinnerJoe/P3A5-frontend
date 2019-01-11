@@ -21,6 +21,15 @@
 
       >
     </div>
+      <div class="line-paragraph"
+      *ngFor = "let rectangle of paragraphRectangles"
+      [style.width.%]="rectangle.width"
+      [style.height.%]="rectangle.height"
+      [style.top.%]="rectangle.top "
+      [style.left.%]="rectangle.left"
+
+      >
+    </div>
       <div class="block-rectangle"
       *ngFor = "let rectangle of blockRectangles"
       [style.width.%]="rectangle.width"

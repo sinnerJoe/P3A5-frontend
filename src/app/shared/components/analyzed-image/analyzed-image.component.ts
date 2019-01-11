@@ -39,7 +39,7 @@ export class AnalyzedImageComponent implements OnInit {
   }
 
 
-
+  paragraphRectangles: CalculatedPos[] = null
   lineRectangles: CalculatedPos[] = null
   blockRectangles: CalculatedPos[] = null
   footnote: CalculatedPos= null
@@ -69,6 +69,7 @@ export class AnalyzedImageComponent implements OnInit {
   loadData(){
     this.lineRectangles = this._data.lines.map((v) => this.makeRectangle(v))
     this.blockRectangles = this._data.blocks.map((v) => this.makeRectangle(v))
+    this.paragraphRectangles = this._data.paragraphs.map((v) => this.makeRectangle(v))
     console.log("FOOTNOTE " + this._data.footnote)
     console.log("DATA ")
     console.log(this._data)
@@ -127,32 +128,5 @@ export class AnalyzedImageComponent implements OnInit {
     this.imageLoaded = true;
     if(this._data)
       this.loadData();
-    // this.data = {
-    //   lines: [
-    //     {
-    //       x1: 600,
-    //       y1: 2000,
-    //       x2: 1800,
-    //       y2: 1900,
-    //       displayed: true
-    //     },
-    //     {
-    //       x1: 500,
-    //       y1: 2000,
-    //       x2: 800,
-    //       y2: 1900,
-    //       displayed: true
-    //     },
-    //   ],
-    //   blocks: [
-    //     {
-    //       x1: 300,
-    //       y1: 1500,
-    //       x2: 600,
-    //       y2: 1600,
-    //       displayed: true
-    //     },
-    //   ]
-    // };
   }
 }

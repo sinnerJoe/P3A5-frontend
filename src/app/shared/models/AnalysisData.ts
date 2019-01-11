@@ -10,5 +10,6 @@ export interface Rectangle{
 export interface AnalysisData{
   lines: Rectangle[]
   blocks: Rectangle[]
-  footnote?: Rectangle
+  paragraphs: Rectangle[]
+  footnote?: Rectangle,
 }

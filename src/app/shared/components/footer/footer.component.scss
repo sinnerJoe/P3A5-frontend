@@ -1,6 +1,9 @@
 @import "../../../../assets/constants.scss";
 .footer {
     background: #c6c6c6;
-    background:  $footerGradient;
+    background: $footerGradient;
+    position: fixed;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
-

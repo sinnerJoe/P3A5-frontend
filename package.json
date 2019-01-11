@@ -24,6 +24,7 @@
     "@ngrx/store": "^7.0.0",
     "@types/angular-route": "^1.7.0",
     "core-js": "^2.5.4",
+    "ngx-clipboard": "^11.1.9",
     "roboto-fontface": "^0.10.0",
     "rxjs": "^6.3.3",
     "spectre.css": "^0.5.7",

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -15,6 +15,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { ClipboardModule } from "ngx-clipboard";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +27,11 @@ import { AppEffects } from './app.effects';
     ImageListComponent,
     AnalyzedImageComponent,
     MainPageComponent,
-    ProcessedImagesPageComponent
+    ProcessedImagesPageComponent,
+    ErrorPageComponent,
+    NotFoundPageComponent
   ],
-  imports: [HttpClientModule, BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers }), EffectsModule.forRoot([AppEffects])],
+  imports: [HttpClientModule, ClipboardModule,  FormsModule, BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers }), EffectsModule.forRoot([AppEffects])],
   providers: [],
   bootstrap: [AppComponent]
 })

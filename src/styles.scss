@@ -7,6 +7,11 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 .table {
     display: table;
     width: 100%;
@@ -18,15 +23,15 @@ body {
     vertical-align: middle;
 }
 
-.row-wrapper{
-  display: table-row;
-  vertical-align: middle;
+.row-wrapper {
+    display: table-row;
+    vertical-align: middle;
 }
 
 .hide {
     display: none !important;
 }
 
-.flex-nowrap{
-  flex-wrap: nowrap;
+.flex-nowrap {
+    flex-wrap: nowrap;
 }

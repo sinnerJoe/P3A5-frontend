@@ -27,15 +27,21 @@
     @extend .line-rectangle;
     border: 3px blue solid;
     background: none;
-    box-sizing: content-box;
 }
 
-.footnote-rectangle{
-  @extend .line-rectangle;
-  border: 3px magenta solid;
-  background: rgba(173, 0, 253, 0.600);
+.footnote-rectangle {
+    @extend .line-rectangle;
+    border: 3px magenta solid;
+    background: rgba(173, 0, 253, 0.600);
 }
 
 .full-size-image {
     width: 100%;
+}
+
+.line-paragraph {
+    @extend .line-rectangle;
+    background: rgba(orange, 0.2);
+    border: red 4px solid;
+    // box-sizing: content-box;
 }
