@@ -12,32 +12,51 @@
       [style.left.%]="footnote.left"
       >
       </div>
-      <div class="line-rectangle"
-      *ngFor = "let rectangle of lineRectangles"
+
+      <div class="sidenote-rectangle"
+      *ngFor="let rectangle of sidenotes"
       [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
-      [style.top.%]="rectangle.top "
-      [style.left.%]="rectangle.left"
+      [style.top.%]="rectangle.top"
+      [style.left.%]="rectangle.left">
+      </div>
 
-      >
-    </div>
-      <div class="line-paragraph"
-      *ngFor = "let rectangle of paragraphRectangles"
-      [style.width.%]="rectangle.width"
-      [style.height.%]="rectangle.height"
-      [style.top.%]="rectangle.top "
-      [style.left.%]="rectangle.left"
 
-      >
-    </div>
       <div class="block-rectangle"
-      *ngFor = "let rectangle of blockRectangles"
+      *ngFor = "let rectangle of blocks"
       [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top"
       [style.left.%]="rectangle.left"
 
       >
+    </div>
+
+
+
+    <div class="line-paragraph"
+    *ngFor="let rectangle of paragraphs"
+    [style.width.%]="rectangle.width"
+      [style.height.%]="rectangle.height"
+      [style.top.%]="rectangle.top "
+      [style.left.%]="rectangle.left">
+    </div>
+
+    <div
+    class="line-rectangle"
+    *ngFor="let rectangle of lines"
+    [style.width.%]="rectangle.width"
+    [style.height.%]="rectangle.height"
+      [style.top.%]="rectangle.top "
+      [style.left.%]="rectangle.left">
+    </div>
+    <div
+      class="word-rectangle"
+      *ngFor="let rectangle of words"
+      [style.width.%]="rectangle.width"
+      [style.height.%]="rectangle.height"
+      [style.top.%]="rectangle.top "
+      [style.left.%]="rectangle.left">
     </div>
 
   </div>

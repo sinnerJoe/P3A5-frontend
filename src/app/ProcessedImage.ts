@@ -12,3 +12,4 @@ export interface Rectangle{
 export interface ProcessedImage extends AnalysisData{
     path: string
 }
+

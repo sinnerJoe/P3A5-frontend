@@ -1,13 +1,8 @@
-import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { AnalysisData } from '../../models/AnalysisData';
+import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { AnalysisData, CalculatedPos, CalculatedImage } from '../../models/AnalysisData';
 import { _getViewData } from '@angular/core/src/render3/state';
+import { ParsedDataManagerService } from '../../services/parsed-data-manager/parsed-data-manager.service';
 
-interface CalculatedPos {
-  width: number,
-  height: number,
-  top: number,
-  left: number
-}
 
 @Component({
   selector: "app-analyzed-image",
@@ -23,6 +18,7 @@ export class AnalyzedImageComponent implements OnInit {
   set image(value: string){
     this._image = value;
     this.imageLoaded = false;
+    this.changeDetector.detectChanges()
   }
 
   get image(){
@@ -38,12 +34,21 @@ export class AnalyzedImageComponent implements OnInit {
       this.loadData();
   }
 
-
-  paragraphRectangles: CalculatedPos[] = null
-  lineRectangles: CalculatedPos[] = null
-  blockRectangles: CalculatedPos[] = null
+  set rectangles(value: CalculatedImage){
+    this.paragraphs = value.paragraphs
+    this.lines = value.lines
+    this.words = value.words
+    this.footnote = value.footnote
+    this.sidenotes = value.sidenotes
+    this.blocks = value.blocks
+    this.changeDetector.detectChanges();
+  }
+  paragraphs: CalculatedPos[] = null
+  lines: CalculatedPos[] = null
+  blocks: CalculatedPos[] = null
+  words: CalculatedPos[] = null
   footnote: CalculatedPos= null
-
+  sidenotes: CalculatedPos[] = []
   _data:AnalysisData;
 
   @ViewChild("displayedImage")
@@ -67,16 +72,32 @@ export class AnalyzedImageComponent implements OnInit {
   // }
 
   loadData(){
-    this.lineRectangles = this._data.lines.map((v) => this.makeRectangle(v))
-    this.blockRectangles = this._data.blocks.map((v) => this.makeRectangle(v))
-    this.paragraphRectangles = this._data.paragraphs.map((v) => this.makeRectangle(v))
-    console.log("FOOTNOTE " + this._data.footnote)
-    console.log("DATA ")
-    console.log(this._data)
+    const savedData = this.dataManager.getImage(this._image)
+    if(savedData){
+      this.rectangles = savedData
+
+      return;
+    }
+    const rectanglesObj: CalculatedImage = {
+      blocks: [],
+      footnote: null,
+      lines: [],
+      paragraphs: [],
+      sidenotes: [],
+      words: []
+    }
+    rectanglesObj.lines = this._data.lines.map((v) => this.makeRectangle(v))
+    rectanglesObj.blocks = this._data.blocks.map((v) => this.makeRectangle(v))
+    rectanglesObj.paragraphs = this._data.paragraphs.map((v) => this.makeRectangle(v))
+    rectanglesObj.words = this._data.words.map((v) => this.makeRectangle(v))
+    rectanglesObj.sidenotes = this._data.sidenotes.map((v)=> this.makeRectangle(v))
+
     if(this._data.footnote)
-      this.footnote = this.makeRectangle(this._data.footnote)
+      rectanglesObj.footnote  = this.makeRectangle(this._data.footnote)
     else
-      this.footnote = null
+      rectanglesObj.footnote = null
+    this.rectangles = rectanglesObj
+    this.dataManager.addImage(this.image, rectanglesObj)
   }
 
   makeRectangle(val) {
@@ -85,6 +106,7 @@ export class AnalyzedImageComponent implements OnInit {
       height: this.rectangleHeight(val.y1, val.y2),
       top: this.yPos(val.y1),
       left: this.xPos(val.x1),
+      visible: true
     }
   }
 
@@ -108,11 +130,12 @@ export class AnalyzedImageComponent implements OnInit {
     return y1 / this.sourceHeight * 100;
   }
 
-  constructor() {}
+  constructor(
+      private dataManager: ParsedDataManagerService,
+    private changeDetector: ChangeDetectorRef
+            ) {}
 
   ngOnInit() {
-
-
 
   }
 

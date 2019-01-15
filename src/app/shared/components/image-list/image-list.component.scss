@@ -1,4 +1,13 @@
 @import "../../../../assets/constants.scss";
+.tint {
+    background: rgba($primary, 0.2);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    visibility: hidden;
+}
+
 .arrow {
     color: rgb(78, 78, 78);
     font-size: 5rem;
@@ -80,9 +89,17 @@ $border: 2px solid gray;
     box-sizing: border-box;
     border-left: $border;
     border-right: $border;
-    &:hover,
+    &:hover {
+        .tint {
+            visibility: visible;
+        }
+    }
     &.selected {
-        border-color: $primaryDark;
+        border-top:5px solid $primaryDark;
+        // box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        .tint {
+            visibility: visible;
+        }
     }
 }
 
