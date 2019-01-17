@@ -11,33 +11,62 @@
   
     <div [@sideMenuAnime]='openClose' class="sidebar_content" id="mySidebar_content">
       <div [@sideMenuAnime]='openClose' class="sidebar_button_x" >
-        <button class="btn btn-action btn-primary btn-lg" (click)='hideAndShow()'><i class="fas fa-times"></i></button>
+        <button class="btn btn-action  btn-lg" (click)='hideAndShow()'><i class="fas fa-times"></i></button>
       </div>
+      <div class="general-eye"><p>Hide all</p><i class="far fa-eye"></i></div>
+      <hr>
+      <li *ngFor="let principalElement of principalArray;let i = index">
       <div class="accordion">
-      <br/>
+         
+         
+        <input id="accordion-{{i+1}}" type="checkbox" name="accordion-checkbox" hidden="">
+        <div class="accordion-header-basic">
+        <label class="accordion-header c-hand" for="accordion-{{i+1}}">  
+            {{ principalElement }}<i class="far fa-eye"></i>
+         </label>
+      </div>
+        <div class="accordion-body">
+          <ul class="menu menu-nav">
+              <li *ngFor="let rectangle of rectangles;let i = index" >
+                  Rectangle {{ i+1}}<i class="far fa-eye"></i>
+          </ul>
+        </div>
+    
+      </div>
+        </li>
+
+      <!-- <div class="accordion">
+          <hr>
         <input id="accordion-1" type="checkbox" name="accordion-checkbox" hidden="">
-        
-        <label class="accordion-header c-hand" for="accordion-1">Elements</label>
+        <div class="accordion-header-basic">
+        <label class="accordion-header c-hand" for="accordion-1">Rectangles</label><i id="header-eye" class="far fa-eye"></i> 
+      </div>
         <div class="accordion-body">
           <ul class="menu menu-nav">
-            <li class="menu-item"><a href="#accordions">Element 1</a></li>
-            <li class="menu-item"><a href="#accordions">Element 2</a></li>
+              <li *ngFor="let rectangle of rectangles">
+                  {{ rectangle }}<i class="far fa-eye"></i>
+                </li>
+            
           </ul>
         </div>
-      </div>
-      <div class="accordion">
+      </div> -->
+      
+      <!-- <div class="accordion">
         <input id="accordion-2" type="checkbox" name="accordion-checkbox" hidden="">
-        <label class="accordion-header c-hand" for="accordion-2">Layout</label>
+        <div class="accordion-header-basic">
+        <label class="accordion-header c-hand" for="accordion-2">Blocks</label>
+        <i id="header-eye" class="far fa-eye"></i>
+      </div>
         <div class="accordion-body">
           <ul class="menu menu-nav">
-            <li class="menu-item"><a href="#accordions">Layout 1</a></li>
-            <li class="menu-item"><a href="#accordions">Layout 2</a></li>
+            <li class="menu-item"><a href="#accordions">Layout 1</a><i class="far fa-eye"></i></li>
+            <li class="menu-item"><a href="#accordions">Layout 2</a><i class="far fa-eye"></i></li>
           </ul>
         </div>
-      </div>
-      <div class="accordion">
+      </div> -->
+      <!-- <div class="accordion">
         <input id="accordion-3" type="checkbox" name="accordion-checkbox" hidden="">
-        <label class="accordion-header c-hand" for="accordion-3">Components</label>
+        <label class="accordion-header c-hand" for="accordion-3">Lines</label>
         <div class="accordion-body">
           <ul class="menu menu-nav">
             <li class="menu-item"><a href="#accordions">Component 1</a></li>
@@ -45,6 +74,6 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
