@@ -35,6 +35,12 @@
     background: rgba(173, 0, 253, 0.600);
 }
 
+.header-rectangle {
+    @extend .line-rectangle;
+    border: 3px rgba(0, 87, 231, 1) solid;
+    background: rgba(0, 87, 231, 0.4);
+}
+
 .full-size-image {
     width: 100%;
 }

@@ -14,6 +14,7 @@ export interface AnalysisData{
   footnote?: Rectangle
   sidenotes: Rectangle[]
   words:Rectangle[]
+  header?: Rectangle
 }
 
 export interface CalculatedPos {
@@ -29,8 +30,9 @@ export interface CalculatedImage{
     lines: CalculatedPos[]
     blocks: CalculatedPos[]
     words: CalculatedPos[]
-    footnote ?: CalculatedPos
     sidenotes: CalculatedPos[]
+    footnote ?: CalculatedPos
+    header?: CalculatedPos
   }
 
 

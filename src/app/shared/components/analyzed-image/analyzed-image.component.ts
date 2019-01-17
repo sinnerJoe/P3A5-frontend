@@ -41,6 +41,7 @@ export class AnalyzedImageComponent implements OnInit {
     this.footnote = value.footnote
     this.sidenotes = value.sidenotes
     this.blocks = value.blocks
+    this.header = value.header
     this.changeDetector.detectChanges();
   }
   paragraphs: CalculatedPos[] = null
@@ -49,6 +50,7 @@ export class AnalyzedImageComponent implements OnInit {
   words: CalculatedPos[] = null
   footnote: CalculatedPos= null
   sidenotes: CalculatedPos[] = []
+  header: CalculatedPos = null
   _data:AnalysisData;
 
   @ViewChild("displayedImage")
@@ -84,7 +86,8 @@ export class AnalyzedImageComponent implements OnInit {
       lines: [],
       paragraphs: [],
       sidenotes: [],
-      words: []
+      words: [],
+      header:null
     }
     rectanglesObj.lines = this._data.lines.map((v) => this.makeRectangle(v))
     rectanglesObj.blocks = this._data.blocks.map((v) => this.makeRectangle(v))
@@ -92,10 +95,12 @@ export class AnalyzedImageComponent implements OnInit {
     rectanglesObj.words = this._data.words.map((v) => this.makeRectangle(v))
     rectanglesObj.sidenotes = this._data.sidenotes.map((v)=> this.makeRectangle(v))
 
+    if(this._data.header)
+      rectanglesObj.header =  this.makeRectangle(this._data.header)
+
     if(this._data.footnote)
       rectanglesObj.footnote  = this.makeRectangle(this._data.footnote)
-    else
-      rectanglesObj.footnote = null
+
     this.rectangles = rectanglesObj
     this.dataManager.addImage(this.image, rectanglesObj)
   }

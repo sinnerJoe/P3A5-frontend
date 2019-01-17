@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,8 @@ import { AppEffects } from './app.effects';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ClipboardModule } from "ngx-clipboard";
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +32,18 @@ import { ClipboardModule } from "ngx-clipboard";
     MainPageComponent,
     ProcessedImagesPageComponent,
     ErrorPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    SidebarComponent
   ],
-  imports: [HttpClientModule, ClipboardModule,  FormsModule, BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers }), EffectsModule.forRoot([AppEffects])],
+  imports: [
+    BrowserAnimationsModule, HttpClientModule,
+    ClipboardModule,
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AppEffects])
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

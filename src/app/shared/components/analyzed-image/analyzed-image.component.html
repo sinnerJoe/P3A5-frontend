@@ -12,6 +12,14 @@
       [style.left.%]="footnote.left"
       >
       </div>
+      <div class="header-rectangle"
+      *ngIf = "header"
+      [style.width.%]="header.width"
+      [style.height.%]="header.height"
+      [style.top.%]="header.top "
+      [style.left.%]="header.left"
+      >
+      </div>
 
       <div class="sidenote-rectangle"
       *ngFor="let rectangle of sidenotes"
