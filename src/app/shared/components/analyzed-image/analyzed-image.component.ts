@@ -34,7 +34,10 @@ export class AnalyzedImageComponent implements OnInit {
       this.loadData();
   }
 
+  calculatedData: CalculatedImage
+
   set rectangles(value: CalculatedImage){
+    this.calculatedData = value;
     this.paragraphs = value.paragraphs
     this.lines = value.lines
     this.words = value.words
@@ -42,6 +45,8 @@ export class AnalyzedImageComponent implements OnInit {
     this.sidenotes = value.sidenotes
     this.blocks = value.blocks
     this.header = value.header
+
+
     this.changeDetector.detectChanges();
   }
   paragraphs: CalculatedPos[] = null
@@ -87,7 +92,15 @@ export class AnalyzedImageComponent implements OnInit {
       paragraphs: [],
       sidenotes: [],
       words: [],
-      header:null
+      header:null,
+      allVisible: true,
+      blocksVisible: true,
+      footnoteVisible: true,
+      headerVisible: true,
+      linesVisible: true,
+      paragraphsVisible: true,
+      sidenotesVisible: true,
+      wordsVisible: true
     }
     rectanglesObj.lines = this._data.lines.map((v) => this.makeRectangle(v))
     rectanglesObj.blocks = this._data.blocks.map((v) => this.makeRectangle(v))
@@ -103,6 +116,7 @@ export class AnalyzedImageComponent implements OnInit {
 
     this.rectangles = rectanglesObj
     this.dataManager.addImage(this.image, rectanglesObj)
+    this.dataManager.selectedImage = this.image
   }
 
   makeRectangle(val) {
@@ -136,7 +150,7 @@ export class AnalyzedImageComponent implements OnInit {
   }
 
   constructor(
-      private dataManager: ParsedDataManagerService,
+      public dataManager: ParsedDataManagerService,
     private changeDetector: ChangeDetectorRef
             ) {}
 

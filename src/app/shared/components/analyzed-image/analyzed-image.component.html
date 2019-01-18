@@ -2,10 +2,12 @@
 
 
 <div class="relative">
-  <div class="p-absolute data-layer full-size " *ngIf="sourceHeight && sourceWidth">
+  <div class="p-absolute data-layer full-size " *ngIf="calculatedData && sourceHeight && sourceWidth">
     <div class="relative full-size ">
+
+
       <div class="footnote-rectangle"
-      *ngIf = "footnote"
+      *ngIf = "footnote && calculatedData.allVisible && calculatedData.footnoteVisible"
       [style.width.%]="footnote.width"
       [style.height.%]="footnote.height"
       [style.top.%]="footnote.top "
@@ -13,7 +15,7 @@
       >
       </div>
       <div class="header-rectangle"
-      *ngIf = "header"
+      *ngIf = "header && calculatedData.allVisible && calculatedData.headerVisible"
       [style.width.%]="header.width"
       [style.height.%]="header.height"
       [style.top.%]="header.top "
@@ -23,6 +25,8 @@
 
       <div class="sidenote-rectangle"
       *ngFor="let rectangle of sidenotes"
+
+      [class.hide]="!rectangle.visible || !calculatedData.allVisible || !calculatedData.sidenotesVisible"
       [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top"
@@ -32,6 +36,7 @@
 
       <div class="block-rectangle"
       *ngFor = "let rectangle of blocks"
+      [class.hide]="!rectangle.visible || !calculatedData.allVisible || !calculatedData.blocksVisible"
       [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top"
@@ -44,6 +49,7 @@
 
     <div class="line-paragraph"
     *ngFor="let rectangle of paragraphs"
+    [class.hide]="!rectangle.visible || !calculatedData.allVisible || !calculatedData.paragraphsVisible"
     [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top "
@@ -53,6 +59,7 @@
     <div
     class="line-rectangle"
     *ngFor="let rectangle of lines"
+    [class.hide]="!rectangle.visible || !calculatedData.allVisible || !calculatedData.linesVisible"
     [style.width.%]="rectangle.width"
     [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top "
@@ -61,12 +68,12 @@
     <div
       class="word-rectangle"
       *ngFor="let rectangle of words"
+      [class.hide]="!rectangle.visible || !calculatedData.allVisible || !calculatedData.wordsVisible"
       [style.width.%]="rectangle.width"
       [style.height.%]="rectangle.height"
       [style.top.%]="rectangle.top "
       [style.left.%]="rectangle.left">
     </div>
-
   </div>
 </div>
 

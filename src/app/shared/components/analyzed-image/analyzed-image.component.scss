@@ -1,7 +1,8 @@
 .line-rectangle {
     position: absolute;
-    border: 1.5px yellow solid;
-    background: rgba(228, 0, 0, 0.582);
+    border:2px rgb(245, 221, 0) solid;
+    background: transparent;
+    // background: rgba(228, 0, 0, 0.582);
     box-sizing: border-box;
 }
 
@@ -25,13 +26,13 @@
 
 .block-rectangle {
     @extend .line-rectangle;
-    border: 3px blue solid;
+    border: 4px blue solid;
     background: none;
 }
 
 .footnote-rectangle {
     @extend .line-rectangle;
-    border: 3px magenta solid;
+    border: 2.5px magenta solid;
     background: rgba(173, 0, 253, 0.600);
 }
 
@@ -48,7 +49,7 @@
 .line-paragraph {
     @extend .line-rectangle;
     background: rgba(orange, 0.2);
-    border: red 4px solid; // box-sizing: content-box;
+    border: red 2.5px solid; // box-sizing: content-box;
 }
 
 .word-rectangle {

@@ -1,79 +1,232 @@
-<head>
-  <script>sidebar.component.ts</script>
-</head>
-<div class="sidebar_">
+
+<div class="sidebar_" *ngIf="calculatedImageSelected">
   <div [@sideMenuAnime]='openCloseBase' class="sidebar_button">
 
-    <button class="btn btn-action btn-primary btn-lg" (click)='hideAndShow()'><i class="fas fa-caret-right"></i></button>
+    <button class="btn btn-action btn-primary btn-lg arrow-button"
+            (click)='hideAndShow()'>
+      <i class="fas fa-caret-right"></i>
+    </button>
 
   </div>
 
-  
+
     <div [@sideMenuAnime]='openClose' class="sidebar_content" id="mySidebar_content">
       <div [@sideMenuAnime]='openClose' class="sidebar_button_x" >
-        <button class="btn btn-action  btn-lg" (click)='hideAndShow()'><i class="fas fa-times"></i></button>
+        <button class="btn btn-action  btn-lg" (click)='hideAndShow()'>
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="general-eye"><p>Hide all</p><i class="far fa-eye"></i></div>
+      <div class="mt-5 ml-2 columns col-gapless visibility-button c-hand"
+           (click)="changeAllVisibility()"
+           [class.invisible-element]="!allVisible"
+      >
+        <div class="column">
+          All
+        </div>
+        <div class="flex-end">
+          <i class="far fa-eye c-cursor"></i>
+        </div>
+      </div>
       <hr>
-      <li *ngFor="let principalElement of principalArray;let i = index">
-      <div class="accordion">
-         
-         
-        <input id="accordion-{{i+1}}" type="checkbox" name="accordion-checkbox" hidden="">
-        <div class="accordion-header-basic">
-        <label class="accordion-header c-hand" for="accordion-{{i+1}}">  
-            {{ principalElement }}<i class="far fa-eye"></i>
-         </label>
-      </div>
-        <div class="accordion-body">
-          <ul class="menu menu-nav">
-              <li *ngFor="let rectangle of rectangles;let i = index" >
-                  Rectangle {{ i+1}}<i class="far fa-eye"></i>
-          </ul>
+      <div class="mb-3 mt-2 ml-2 columns col-gapless visibility-button c-hand"
+        (click)="changeHeaderVisibility()"
+        [class.invisible-element]="!headerVisible"
+        *ngIf="header">
+        <div class="column">
+          Header
         </div>
-    
+        <div class="flex-end">
+          <i class="far fa-eye c-cursor"></i>
+        </div>
       </div>
-        </li>
+      <div class="mb-3 ml-2 columns col-gapless visibility-button c-hand"
 
-      <!-- <div class="accordion">
-          <hr>
-        <input id="accordion-1" type="checkbox" name="accordion-checkbox" hidden="">
-        <div class="accordion-header-basic">
-        <label class="accordion-header c-hand" for="accordion-1">Rectangles</label><i id="header-eye" class="far fa-eye"></i> 
+        [class.invisible-element]="!footnoteVisible"
+        *ngIf="footnote">
+        <div class="column">
+          Footnote
+        </div>
+        <div class="flex-end">
+          <i class="far fa-eye c-cursor" ></i>
+        </div>
       </div>
-        <div class="accordion-body">
-          <ul class="menu menu-nav">
-              <li *ngFor="let rectangle of rectangles">
-                  {{ rectangle }}<i class="far fa-eye"></i>
+      <div *ngIf="words && words.length  > 0"
+            [class.invisible-element]="!wordsVisible"
+            >
+        <div class="p-relative">
+          <div class="hover-right">
+            <i class="far fa-eye c-hand" (click)="changeWordsVisibility()"></i>
+          </div>
+
+          <div class="accordion">
+
+
+            <input id="acc-1" type="checkbox"
+            name="accordion-checkbox" hidden=""/>
+            <label class="accordion-header c-hand" for="acc-1">
+              Words
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li *ngFor="let rectangle of words;let i = index" >
+
+                  <div class="ml-2 columns col-gapless visibility-button c-hand"
+                  [class.invisible-element]="!rectangle.visible"
+                  (click)="changeRectangleVisibility(rectangle)">
+                    <div class="column">
+                      word {{i}}
+                    </div>
+                    <div class="flex-end">
+                      <i class="far fa-eye c-cursor"></i>
+                    </div>
+                  </div>
                 </li>
-            
-          </ul>
-        </div>
-      </div> -->
-      
-      <!-- <div class="accordion">
-        <input id="accordion-2" type="checkbox" name="accordion-checkbox" hidden="">
-        <div class="accordion-header-basic">
-        <label class="accordion-header c-hand" for="accordion-2">Blocks</label>
-        <i id="header-eye" class="far fa-eye"></i>
-      </div>
-        <div class="accordion-body">
-          <ul class="menu menu-nav">
-            <li class="menu-item"><a href="#accordions">Layout 1</a><i class="far fa-eye"></i></li>
-            <li class="menu-item"><a href="#accordions">Layout 2</a><i class="far fa-eye"></i></li>
-          </ul>
-        </div>
-      </div> -->
-      <!-- <div class="accordion">
-        <input id="accordion-3" type="checkbox" name="accordion-checkbox" hidden="">
-        <label class="accordion-header c-hand" for="accordion-3">Lines</label>
-        <div class="accordion-body">
-          <ul class="menu menu-nav">
-            <li class="menu-item"><a href="#accordions">Component 1</a></li>
-            <li class="menu-item"><a href="#accordions">Component 2</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
+                </ul>
+              </div>
 
+            </div>
+        </div>
+      </div>
+      <div [class.invisible-element]="!linesVisible"
+      *ngIf="lines && lines.length  > 0">
+        <div class="p-relative">
+          <div class="hover-right">
+            <i class="far fa-eye c-hand" (click)="changeLinesVisibility()"></i>
+          </div>
+
+          <div class="accordion">
+
+
+            <input id="acc-2" type="checkbox"
+            name="accordion-checkbox" hidden=""/>
+            <label class="accordion-header c-hand" for="acc-2">
+              Lines
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li *ngFor="let rectangle of lines;let i = index" >
+
+                  <div class="ml-2 columns col-gapless visibility-button c-hand" [class.invisible-element]="!rectangle.visible" (click)="changeRectangleVisibility(rectangle)">
+                    <div class="column">
+                      line {{i}}
+                    </div>
+                    <div class="flex-end">
+                      <i class="far fa-eye c-cursor"></i>
+                    </div>
+                  </div>
+                </li>
+                </ul>
+              </div>
+
+            </div>
+        </div>
+      </div>
+      <div [class.invisible-element]="!paragraphsVisible"
+          *ngIf="paragraphs && paragraphs.length  > 0">
+        <div class="p-relative">
+          <div class="hover-right">
+            <i class="far fa-eye c-hand" (click)="changeParagraphsVisibility()"></i>
+          </div>
+
+          <div class="accordion">
+
+
+            <input id="acc-3" type="checkbox"
+            name="accordion-checkbox" hidden=""/>
+            <label class="accordion-header c-hand" for="acc-3">
+              Paragraphs
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li *ngFor="let rectangle of paragraphs;let i = index" >
+
+                  <div class="ml-2 columns col-gapless visibility-button c-hand"
+                  [class.invisible-element]="!rectangle.visible"
+                  (click)="changeRectangleVisibility(rectangle)">
+                    <div class="column">
+                      paragraph {{i}}
+                    </div>
+                    <div class="flex-end">
+                      <i class="far fa-eye c-cursor"></i>
+                    </div>
+                  </div>
+                </li>
+                </ul>
+              </div>
+
+            </div>
+        </div>
+      </div>
+      <div [class.invisible-element]="!blocksVisible"
+          *ngIf="blocks && blocks.length  > 0">
+        <div class="p-relative">
+          <div class="hover-right">
+            <i class="far fa-eye c-hand" (click)="changeBlocksVisibility()"></i>
+          </div>
+
+          <div class="accordion">
+
+
+            <input id="acc-4" type="checkbox"
+            name="accordion-checkbox" hidden=""/>
+            <label class="accordion-header c-hand" for="acc-4">
+              Blocks
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li *ngFor="let rectangle of blocks;let i = index" >
+
+                  <div class="ml-2 columns col-gapless visibility-button c-hand"
+                  [class.invisible-element]="!rectangle.visible"
+                  (click)="changeRectangleVisibility(rectangle)">
+                    <div class="column">
+                      block {{i}}
+                    </div>
+                    <div class="flex-end">
+                      <i class="far fa-eye c-cursor"></i>
+                    </div>
+                  </div>
+                </li>
+                </ul>
+              </div>
+
+            </div>
+        </div>
+      </div>
+      <div [class.invisible-element]="!sidenotesVisible"
+          *ngIf="sidenotes && sidenotes.length  > 0">
+        <div class="p-relative">
+          <div class="hover-right">
+            <i class="far fa-eye c-hand" (click)="changeSidenotesVisibility()"></i>
+          </div>
+
+          <div class="accordion">
+
+
+            <input id="acc-5" type="checkbox"
+            name="accordion-checkbox" hidden=""/>
+            <label class="accordion-header c-hand" for="acc-5">
+                Sidenotes
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li *ngFor="let rectangle of sidenotes;let i = index" >
+
+                  <div class="ml-2 columns col-gapless visibility-button c-hand"
+                  [class.invisible-element]="!rectangle.visible"
+                  (click)="changeRectangleVisibility(rectangle)">
+                    <div class="column">
+                      sidenote {{i}}
+                    </div>
+                    <div class="flex-end">
+                      <i class="far fa-eye c-cursor"></i>
+                    </div>
+                  </div>
+                </li>
+                </ul>
+              </div>
+
+            </div>
+        </div>
+      </div>
   </div>

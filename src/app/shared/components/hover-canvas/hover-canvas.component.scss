@@ -20,9 +20,13 @@ label {
     width: 100%;
 }
 
-.p-relative{
-  max-height: 50vw;
-  img{
+.p-relative {
     max-height: 50vw;
-  }
+    img {
+        max-height: 50vw;
+    }
+}
+
+.space-top{
+  top: 70%;
 }

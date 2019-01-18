@@ -12,17 +12,24 @@ export class ParsedDataManagerService {
 
   resetImages(){
     this.analysedImages = {}
+    this.selectedImage = null
   }
 
   addImage(path:string,positions: CalculatedImage){
     this.analysedImages[path] = positions
   }
 
-  getImage(path: string){
-    return this.analysedImages[path]
+
+  getImage(path?: string){
+    if(path)
+      return this.analysedImages[path]
+    else
+      return this.analysedImages[this.selectedImage]
   }
 
 
+
+  selectedImage = null
 
   analysedImages: CalculatedImagesCache = {}
 }

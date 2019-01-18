@@ -1,69 +1,94 @@
 .sidebar_ {
-
-    margin-top: 20%;
-    position:fixed;
+    z-index: 100; // margin-top: 20%;
+    height: 100%;
+    position: fixed;
     margin-block-end: 2%
-   
 }
-.sidebar_content{
-    display: felx;
-    color: #4e4e4e;
-    // position:fixed;
-    border-color:#4e4e4e;
-    background-color:white;
+
+.sidebar_content {
+    display: flex;
+    color: #e0e0e0;
+    background: black; // position:fixed;
+    height: 100%;
+    border-color: #4e4e4e;
     width: auto;
     margin-left: 0%;
     margin-bottom: -10px;
-
 }
 
-.btn.btn-lg{
-
-    background-color: white;
-    border-color:white;
-    background: white;
-    color:#4e4e4e;
-    // flex-direction: column;
-
+.btn.btn-lg {
+    background: inherit;
+    color: inherit;
+    border: none; // flex-direction: column;
 }
 
-.sidebar_button_x{
-
-   direction: rtl;}
-
-.btn.btn-primary{
+.arrow-button {
+    margin-top: 35%;
     position: fixed;
-    background-color: white;
-    border-color:white;
-    background: white;
-    color:#4e4e4e;
-    
+    background-color: black !important;
+    border: white 1px solid !important;
+    border-left: none !important;
+    color: white !important;
 }
 
-    .menu-item
-    {
-        display: flex;
-        justify-content: space-between;
+.sidebar_button_x {
+    direction: rtl;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.general-eye {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion {
+    .general-eye {
+        margin-left: 0;
     }
-
-
-    .accordion .accordion-header {
-    width: 30%;
 }
 
-.accordion-header-basic{
-    display: flex;
-    justify-content: space-between;
-}
-.general-eye{
-    margin-left: 20px;
-    display: flex;
-    justify-content: space-between;
-margin-bottom: -20px;
+.p-relative {
+    position: relative;
 }
 
-.far.fa-eye{
-    margin-right: 4%;
-    padding-top: 7px;
+.hover-right {
+    position: absolute;
+    right: 0.4em;
+    top: 0.3em;
+    i:hover {
+        color: violet;
+    }
 }
-  
+
+.visibility-button{
+  &:hover{
+    text-decoration: underline;
+    i{
+      color: violet;
+    }
+  }
+}
+.flex-end {
+    align-self: flex-end;
+    i {
+        text-decoration: none;
+    }
+    padding-right: 0.4em;
+}
+
+// .hide-all {
+//     right: 0.4em;
+//     top: 0.3em;
+//     i:hover {
+//         color: violet;
+//     }
+// }
+
+
+.invisible-element{
+  color: rgb(83, 83, 83);
+}

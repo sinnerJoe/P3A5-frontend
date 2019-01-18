@@ -26,6 +26,14 @@ export interface CalculatedPos {
 }
 
 export interface CalculatedImage{
+    allVisible: Boolean
+    linesVisible: Boolean
+    blocksVisible: Boolean
+    wordsVisible: Boolean
+    sidenotesVisible: Boolean
+    footnoteVisible: Boolean
+    headerVisible: Boolean
+    paragraphsVisible: Boolean
     paragraphs: CalculatedPos[]
     lines: CalculatedPos[]
     blocks: CalculatedPos[]
